@@ -1,6 +1,7 @@
 import tensorflow as tf
 import args # 👈 配置所有的参数
 import matplotlib.pyplot as plt
+from args import imageSize
 
 
 # 抽象出 pix 2 pix 类
@@ -71,7 +72,11 @@ class pix2pix(tf.keras.Model):
 
     # 🔥🔥🔥 训练判别器 ———————————————————————————————————————————————————————————————————————————————————————————————————————————————
     def train_step(self, data):
+        # 👇 这里返回的是传入的两张图片 (在 args 中配置的)
         x_train,y_train = args.get_x_y_train(data) # 👈 预处理数据的方法(因为输入的 data 图片是合并在一起的),方法也可配置, 写在 args.py 内
+        
+        # 👀 查看传入的图片的尺寸
+        imageSize(args.test_image_path1)
 
         # train D
         for i in range(args.d_step):

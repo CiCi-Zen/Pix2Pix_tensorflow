@@ -1,5 +1,8 @@
+from PIL import Image
+# 👇 核心配置的参数
+
 # 图片大小
-image_shape = (256,256,3) # 64, 64, 3
+image_shape = (64,64,3) # 64, 64, 3
 
 
 # 每一轮 D 和 G 分别训练多少论
@@ -9,7 +12,7 @@ g_step = 2 # 1
 
 # G 和 D 的学习率
 g_learning_rate = 0.00005
-d_learning_rate = 0.0002 # 0.0001
+d_learning_rate = 0.0001 # 0.0001
 
 
 # identity_loss weight，可以手调来试验
@@ -41,7 +44,6 @@ path = '/Users/zeno/Desktop/Pix2Pix-1/facades'
 
 # 从训练集中提取输入 -> 根据你的数据集图片来更改下面的x_train和y_train，详细在note中介绍
 def get_x_y_train(data): # data 为输入的数据
-
     # y_train 是右边的图像(提取了 data 中所有批次的右边部分的图像, image_shape[1] 表示单张图像的宽度, 切片操作 image_shape[1]:image_shape[1] * 2 表示从原图像的宽度一半的位置开始，直到宽度的两倍，这部分即为右边的图像)
     y_train = data[:, :, image_shape[1]:image_shape[1] * 2, :] # 训练输出的 y_train (返回张量)
     # x_train 是左边的图像
@@ -51,6 +53,14 @@ def get_x_y_train(data): # data 为输入的数据
 
 
 
+# 判断图像尺寸的方法
+def imageSize(image_path):
+    with Image.open(image_path) as img:
+        width, height = img.size
+        mode = img.mode  # 'RGB' 表示有3个通道
+        print(f"👀 传入的图片尺寸 Image size: {width}x{height}, Mode: {mode}")
+
+
 
 
 # 这里写你需要拿来测试的图片1和图片2的路径，比如你训练的是将结构图转成建筑物，那么
@@ -58,7 +68,7 @@ def get_x_y_train(data): # data 为输入的数据
 # test_image_path1 = 'C:/Work/night2day/night2day/train/train/1_50_to_15.jpg'
 # test_image_path1 = 'C:/Work/facades/facades/traini/train/12.jpg'
 
-# 👇 后续可以修改成轮询的输入 ？
+# 👇 后续可以修改成轮询 ？
 test_image_path1 = '/Users/zeno/Desktop/Pix2Pix-1/facades/train/12.jpg'
 
 # test_image_path2 = 'C:/Work/night2day/night2day/train/train/1_83_to_109.jpg'
