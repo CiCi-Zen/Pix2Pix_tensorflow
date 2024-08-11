@@ -57,6 +57,8 @@ def get_x_y_train(data): # data 为输入的数据
 # 你可以选两张结构图
 # test_image_path1 = 'C:/Work/night2day/night2day/train/train/1_50_to_15.jpg'
 # test_image_path1 = 'C:/Work/facades/facades/traini/train/12.jpg'
+
+# 👇 后续可以修改成轮询的输入 ？
 test_image_path1 = '/Users/zeno/Desktop/Pix2Pix-1/facades/train/12.jpg'
 
 # test_image_path2 = 'C:/Work/night2day/night2day/train/train/1_83_to_109.jpg'
