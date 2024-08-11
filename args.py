@@ -1,5 +1,5 @@
 # 图片大小
-image_shape = (128,128,3) # 64, 64
+image_shape = (256,256,3) # 64, 64, 3
 
 
 # 每一轮 D 和 G 分别训练多少论
@@ -9,7 +9,7 @@ g_step = 2 # 1
 
 # G 和 D 的学习率
 g_learning_rate = 0.00005
-d_learning_rate = 0.0001 # 0.0001
+d_learning_rate = 0.0002 # 0.0001
 
 
 # identity_loss weight，可以手调来试验
